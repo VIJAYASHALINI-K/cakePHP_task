@@ -1,0 +1,235 @@
+2024-06-10 05:45:36 Error: [RuntimeException] Unknown command `cake cache:clear`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-10 05:45:44 Error: [RuntimeException] Unknown command `cake _help`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-10 08:21:14 Error: [RuntimeException] Unknown command `cake create`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-10 17:31:10 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users_details.product' doesn't exist in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 132
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(98): Cake\Database\Schema\Collection->_reflect()
+#1 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(566): Cake\Database\Schema\CachedCollection->describe()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(691): Cake\ORM\Table->getSchema()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext()
+#7 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake()
+#8 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Bake\Shell\Task\ModelTask->main()
+#9 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(524): Cake\Console\Shell->runCommand()
+#10 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Cake\Console\Shell->runCommand()
+#11 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#12 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#13 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users_details.product' doesn't exist in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 37
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(37): PDOStatement->execute()
+#1 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(173): Cake\Database\Statement\MysqlStatement->execute()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(55): Cake\Database\Statement\StatementDecorator->execute()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(358): Cake\Database\Log\LoggingStatement->execute()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php(67): Cake\Database\Connection->Cake\Database\{closure}()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(361): Cake\Core\Retry\CommandRetry->run()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(310): Cake\Database\Connection->query()
+#7 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php(67): Cake\Database\Connection->Cake\Database\{closure}()
+#8 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(314): Cake\Core\Retry\CommandRetry->run()
+#9 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(130): Cake\Database\Connection->execute()
+#10 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(98): Cake\Database\Schema\Collection->_reflect()
+#11 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe()
+#12 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(566): Cake\Database\Schema\CachedCollection->describe()
+#13 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(691): Cake\ORM\Table->getSchema()
+#14 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#15 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations()
+#16 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext()
+#17 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake()
+#18 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Bake\Shell\Task\ModelTask->main()
+#19 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(524): Cake\Console\Shell->runCommand()
+#20 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Cake\Console\Shell->runCommand()
+#21 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#22 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#23 {main}
+
+
+2024-06-11 05:24:32 Error: [RuntimeException] Unknown command `cake route`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 05:24:47 Error: [RuntimeException] Unknown command `cake route`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 05:25:16 Error: [RuntimeException] Unknown command `cake route`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 05:25:32 Error: [RuntimeException] Unknown command `cake route`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 10:03:23 Error: [RuntimeException] Unknown command `cake serve`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 11:22:56 Error: [RuntimeException] Unknown command `cake create_orders`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 11:23:26 Error: [Symfony\Component\Console\Exception\CommandNotFoundException] Command "createOrders" is not defined. in /var/www/html/cake_sample_project/vendor/symfony/console/Application.php on line 720
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/symfony/console/Application.php(259): Symfony\Component\Console\Application->find()
+#1 /var/www/html/cake_sample_project/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Migrations\Shell\MigrationsShell->main()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(169): Cake\Console\Shell->runCommand()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#7 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#8 {main}
+
+
+2024-06-11 11:23:39 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-11 14:23:12 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users_details.products_users' doesn't exist in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 132
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(98): Cake\Database\Schema\Collection->_reflect()
+#1 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(566): Cake\Database\Schema\CachedCollection->describe()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(691): Cake\ORM\Table->getSchema()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext()
+#7 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake()
+#8 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Bake\Shell\Task\ModelTask->main()
+#9 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(524): Cake\Console\Shell->runCommand()
+#10 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Cake\Console\Shell->runCommand()
+#11 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#12 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#13 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users_details.products_users' doesn't exist in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 37
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(37): PDOStatement->execute()
+#1 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(173): Cake\Database\Statement\MysqlStatement->execute()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(55): Cake\Database\Statement\StatementDecorator->execute()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(358): Cake\Database\Log\LoggingStatement->execute()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php(67): Cake\Database\Connection->Cake\Database\{closure}()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(361): Cake\Core\Retry\CommandRetry->run()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(310): Cake\Database\Connection->query()
+#7 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php(67): Cake\Database\Connection->Cake\Database\{closure}()
+#8 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(314): Cake\Core\Retry\CommandRetry->run()
+#9 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(130): Cake\Database\Connection->execute()
+#10 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(98): Cake\Database\Schema\Collection->_reflect()
+#11 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe()
+#12 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(566): Cake\Database\Schema\CachedCollection->describe()
+#13 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(691): Cake\ORM\Table->getSchema()
+#14 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#15 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations()
+#16 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext()
+#17 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake()
+#18 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Bake\Shell\Task\ModelTask->main()
+#19 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(524): Cake\Console\Shell->runCommand()
+#20 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Cake\Console\Shell->runCommand()
+#21 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#22 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#23 {main}
+
+
+2024-06-11 14:24:11 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users_details.products_users' doesn't exist in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 132
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(98): Cake\Database\Schema\Collection->_reflect()
+#1 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(566): Cake\Database\Schema\CachedCollection->describe()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(691): Cake\ORM\Table->getSchema()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext()
+#7 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake()
+#8 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Bake\Shell\Task\ModelTask->main()
+#9 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(524): Cake\Console\Shell->runCommand()
+#10 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Cake\Console\Shell->runCommand()
+#11 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#12 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#13 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users_details.products_users' doesn't exist in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 37
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(37): PDOStatement->execute()
+#1 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(173): Cake\Database\Statement\MysqlStatement->execute()
+#2 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(55): Cake\Database\Statement\StatementDecorator->execute()
+#3 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(358): Cake\Database\Log\LoggingStatement->execute()
+#4 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php(67): Cake\Database\Connection->Cake\Database\{closure}()
+#5 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(361): Cake\Core\Retry\CommandRetry->run()
+#6 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(310): Cake\Database\Connection->query()
+#7 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php(67): Cake\Database\Connection->Cake\Database\{closure}()
+#8 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Connection.php(314): Cake\Core\Retry\CommandRetry->run()
+#9 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(130): Cake\Database\Connection->execute()
+#10 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(98): Cake\Database\Schema\Collection->_reflect()
+#11 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe()
+#12 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(566): Cake\Database\Schema\CachedCollection->describe()
+#13 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/ORM/Table.php(691): Cake\ORM\Table->getSchema()
+#14 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#15 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations()
+#16 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext()
+#17 /var/www/html/cake_sample_project/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake()
+#18 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(531): Bake\Shell\Task\ModelTask->main()
+#19 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/Shell.php(524): Cake\Console\Shell->runCommand()
+#20 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Cake\Console\Shell->runCommand()
+#21 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell()
+#22 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#23 {main}
+
+
+2024-06-12 03:45:24 Error: [RuntimeException] Unknown command `cake route`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
+2024-06-12 03:45:37 Error: [RuntimeException] Unknown command `cake route`. Run `cake --help` to get the list of valid commands. in /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/cake_sample_project/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName()
+#1 /var/www/html/cake_sample_project/bin/cake.php(12): Cake\Console\CommandRunner->run()
+#2 {main}
+
+
