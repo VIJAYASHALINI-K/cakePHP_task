@@ -29,7 +29,6 @@ class AppController extends Controller
 {
     public function isAuthorized($user)
     {
-        // By default deny access.
         return false;
     }
 
@@ -50,14 +49,13 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
-        // $this->Auth->config('authenticate', ['Form']);
 
 
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3/en/controllers/components/security.html
          */
-        // $this->loadComponent('Security');
+        
         $this->loadComponent('Auth', [
             'authorize' => 'Controller',
             'authenticate' => [
@@ -69,10 +67,6 @@ class AppController extends Controller
                     'finder' => 'auth'
                 ]
             ],
-            // 'loginAction' => [
-            //     'controller' => 'Users',
-            //     'action' => 'login'
-            // ],
             'unauthorizedRedirect' => $this->referer(),
             'checkAuthIn' => 'Controller.initialize'
         ]);

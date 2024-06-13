@@ -21,12 +21,7 @@ use Cake\Log\Log;
  */
 class UsersTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
+    
     public function initialize(array $config)
     {
         parent::initialize($config);
@@ -34,18 +29,11 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-        // $this->hasMany('Products');
         $this->belongsToMany('Products',[
-            'joinTable' => 'ProductsUsers',
-            // 'through' => 'ProductsUsers'
+            'joinTable' => 'ProductsUsers'
         ]);
     }
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
+   
     public function validationDefault(Validator $validator)
     {
         $validator
@@ -53,7 +41,6 @@ class UsersTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            // ->alphanumeric('fname')
             ->add('fname', 'validFname',[
                 'rule' => 'isValidFname',
                 'message' => __('Fname contains only letters'),
@@ -61,23 +48,16 @@ class UsersTable extends Table
                 ])
             
             ->requirePresence('fname', 'create')
-            // ->maxLength('fname', 15)
-            // ->minLength('fname', 3)
             ->notEmptyString('fname');
-            // ,'fname contains only letters',function ($context){
-            //     return ($context['data']['fname']);
-            // });
+          
 
         $validator
-            // ->ascii('lname')
             ->requirePresence('lname', 'create')
             ->add('lname', 'validLname',[
                 'rule' => 'isValidLname',
                 'message' => __('Lname contains only letters'),
                 'provider' => 'table',
                 ])
-            // ->maxLength('lname', 3)
-            // ->minLength('lname', 1)
             ->notEmptyString('lname');
 
         $validator
@@ -124,53 +104,22 @@ class UsersTable extends Table
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    // public function buildRules(RulesChecker $rules)
-    // {
-    //     $rules->add($rules->isUnique(['email']));
-
-    //     return $rules;
-    // }
+    
     public function isValidFname($value, array $context) {            
        
         if(preg_match("/^[A-Z]{3,8}$/",$value)){
-            // Log::debug("if valid");
             return true;
         }
         else{
-            // Log::debug("else valid");
             return "Fname contains only letters";
         }
-        // Log::debug($value);
-        // $result=preg_match("/^[A-Z]{3,8}$/",$value);
-        // Log::debug("FNMAE");
-        // Log::debug($result);
-        // return $result;
-        // return preg_match("/^[A-Z]{3,8}$/",$value);
     }
     public function isValidLname($value, array $context) {            
        
         if(preg_match("/^[A-Z]{1,3}$/",$value)){
-            // Log::debug("if valid");
-            // return false;
             return true;
         }
         else{
-            // Log::debug("else valid");
             return "Lname contains only letters";
-            // return "valid";
-        }
-        // Log::debug($value);
-        // $result=preg_match("/^[A-Z]{1,3}$/",$value);
-        // Log::debug("LNMAE");
-        // Log::debug($result);
-        // return $result;
-        // return preg_match("/^[A-Z]{1,3}$/",$value);
-    }
+        }}
 }

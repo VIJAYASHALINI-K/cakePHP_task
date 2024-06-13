@@ -14,25 +14,7 @@ use Cake\Log\Log;
 class LoginController extends AppController
 {
    
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
-    // public function index()
-    // {
-    //     $login = $this->paginate($this->Login);
-
-    //     $this->set(compact('login'));
-    // }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Login id.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+   
         public function login()
         {
             // $users_table = TableRegistry::getTableLocator()->get('Users');

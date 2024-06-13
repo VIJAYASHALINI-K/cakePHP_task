@@ -1,0 +1,3 @@
+/vendors/*
+/config/.env
+/config/logs/*
