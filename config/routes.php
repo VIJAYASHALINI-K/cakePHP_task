@@ -23,9 +23,8 @@ use Cake\Routing\Route\DashedRoute;
 
 
 Router::defaultRouteClass(DashedRoute::class);
-Router::scope('/api', function (RouteBuilder $routes) {
-    
-    $routes->connect('/users',['controller' => 'Users' , 'action' => 'login']);
+Router::scope('/api', function (RouteBuilder $routes) {    
+    $routes->connect('/users',['controller' => 'Users' , 'action' => 'add']);
     $routes->fallbacks(DashedRoute::class);
 });
     

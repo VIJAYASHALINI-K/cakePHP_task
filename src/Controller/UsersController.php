@@ -5,9 +5,9 @@ use Cake\ORM\TableRegistry;
 use Cake\Datasource\ConnectionManager;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Log\Log;
+use CAke\Utility\Xml;
 use App\Model\Users;
 use Cake\Http\Response;
-
 class UsersController extends AppController{
     public function isAuthorized($user)
     {
@@ -21,8 +21,11 @@ class UsersController extends AppController{
     }
     public function login()
     {
-        if ($this->request->is('post')) {           
-            $user = $this->Auth->identify();            
+        Log::debug('login');
+        if ($this->request->is('post')) {
+           
+            $user = $this->Auth->identify();
+            
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect(['controller' => 'Users', 'action' => 'display']);
@@ -32,26 +35,30 @@ class UsersController extends AppController{
         }   
     }
    public function add(){
-
     $this->viewBuilder()->enableAutoLayout(false);
     if($this->request->is('post')){
-            $this->request = $this->request->withData('user_name', $this->request->getData('fname') . ' ' . $this->request->getData('lname'));
+            $user=Xml::toArray(Xml::build($this->request->input()));
+            $fname=$user['user']['fname'];
+            $lname=$user['user']['lname'];
+            $user_name=$fname.' '.$lname;
+            $user['user']['user_name']=$user_name;
             $users_table = TableRegistry::getTableLocator()->get('Users');
-            $users = $users_table->newEntity($this->request->getData());
+            $users = $users_table->newEntity($user['user']);
             if ($users->getErrors()) {
+                Log::debug('if');
                 $result=$users->getErrors();
                 $this->set('Users',$users);
                 return $this->response->withType("application/json")->withStringBody(json_encode($result));
             } 
             else {
-                $user_name=$this->request->getData('user_name'); 
-                $email = $this->request->getData('email');
+                $user_name = $user['user']['user_name']; 
+                $email = $user['user']['email'];
                 $hashPswdObj = new DefaultPasswordHasher;
-                $password = $hashPswdObj->hash($this->request->getData('password'));
-                $address_line_1 = $this->request->getData('address_line_1');
-                $address_line_2 = $this->request->getData('address_line_2');
-                $pincode = $this->request->getData('pincode');
-                $phone_number = $this->request->getData('phone_number');
+                $password = $hashPswdObj->hash($user['user']['password']);
+                $address_line_1 = $user['user']['address_line_1'];
+                $address_line_2 = $user['user']['address_line_2'];
+                $pincode = $user['user']['pincode'];
+                $phone_number = $user['user']['phone_number'];
                 $users->user_name = $user_name;
                 $users->email = $email;
                 $users->password = $password;
