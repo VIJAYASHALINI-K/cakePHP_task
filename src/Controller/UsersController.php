@@ -7,6 +7,7 @@ use Cake\Auth\DefaultPasswordHasher;
 use Cake\Log\Log;
 use App\Model\Users;
 use Cake\Http\Response;
+
 class UsersController extends AppController{
     public function isAuthorized($user)
     {
@@ -20,11 +21,8 @@ class UsersController extends AppController{
     }
     public function login()
     {
-        Log::debug('login');
-        if ($this->request->is('post')) {
-           
-            $user = $this->Auth->identify();
-            
+        if ($this->request->is('post')) {           
+            $user = $this->Auth->identify();            
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect(['controller' => 'Users', 'action' => 'display']);
@@ -37,18 +35,16 @@ class UsersController extends AppController{
 
     $this->viewBuilder()->enableAutoLayout(false);
     if($this->request->is('post')){
-
+            $this->request = $this->request->withData('user_name', $this->request->getData('fname') . ' ' . $this->request->getData('lname'));
             $users_table = TableRegistry::getTableLocator()->get('Users');
             $users = $users_table->newEntity($this->request->getData());
-            
             if ($users->getErrors()) {
                 $result=$users->getErrors();
                 $this->set('Users',$users);
                 return $this->response->withType("application/json")->withStringBody(json_encode($result));
             } 
             else {
-                $fname = $this->request->getData('fname');
-                $lname = $this->request->getData('lname');    
+                $user_name=$this->request->getData('user_name'); 
                 $email = $this->request->getData('email');
                 $hashPswdObj = new DefaultPasswordHasher;
                 $password = $hashPswdObj->hash($this->request->getData('password'));
@@ -56,7 +52,7 @@ class UsersController extends AppController{
                 $address_line_2 = $this->request->getData('address_line_2');
                 $pincode = $this->request->getData('pincode');
                 $phone_number = $this->request->getData('phone_number');
-                $users->user_name = $fname.' '.$lname;
+                $users->user_name = $user_name;
                 $users->email = $email;
                 $users->password = $password;
                 $users->address_line_1 = $address_line_1;

@@ -41,24 +41,13 @@ class UsersTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->add('fname', 'validFname',[
+            ->add('user_name', 'validUserName',[
                 'rule' => 'isValidFname',
-                'message' => __('Fname contains only letters'),
+                'message' => __('username contains letters followed by whitespace follwed by letter'),
                 'provider' => 'table',
-                ])
-            
-            ->requirePresence('fname', 'create')
-            ->notEmptyString('fname');
-          
-
-        $validator
-            ->requirePresence('lname', 'create')
-            ->add('lname', 'validLname',[
-                'rule' => 'isValidLname',
-                'message' => __('Lname contains only letters'),
-                'provider' => 'table',
-                ])
-            ->notEmptyString('lname');
+                ])            
+            ->requirePresence('user_name', 'create')
+            ->notEmptyString('user_name');
 
         $validator
             ->email('email')
@@ -104,22 +93,12 @@ class UsersTable extends Table
         return $validator;
     }
 
-    
-    public function isValidFname($value, array $context) {            
-       
-        if(preg_match("/^[A-Z]{3,8}$/",$value)){
+    public function isValidFname($value, array $context) {           
+        if(preg_match("/^[A-Z]{1}[A-Za-z]{2,8}\s{1}[A-Z]{1,3}$/",$value)){
             return true;
         }
         else{
-            return "Fname contains only letters";
+            return "username starts with uppercase letter followed by letters, whitespace and letter";
         }
     }
-    public function isValidLname($value, array $context) {            
-       
-        if(preg_match("/^[A-Z]{1,3}$/",$value)){
-            return true;
-        }
-        else{
-            return "Lname contains only letters";
-        }}
 }
