@@ -4,5 +4,5 @@
 ### created users and products model
 ### users details get stored using api request and validation completed by default in model\entity
 ### using association completed table join
-### Implemented server request data inclusion in controller
-### Implemented xml server request handling in controller using xml to array
+### Executed server-side requests for data, including XML and x-www-form-urlencoded formats.
+

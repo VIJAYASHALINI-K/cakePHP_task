@@ -6,6 +6,7 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Log\Log;
 use CAke\Utility\Xml;
+use Cake\Http\ServerRequest;
 use App\Model\Users;
 use Cake\Http\Response;
 class UsersController extends AppController{
@@ -34,23 +35,20 @@ class UsersController extends AppController{
             }
         }   
     }
-   public function add(){
-    $this->viewBuilder()->enableAutoLayout(false);
-    if($this->request->is('post')){
-            $user=Xml::toArray(Xml::build($this->request->input()));
-            $fname=$user['user']['fname'];
-            $lname=$user['user']['lname'];
-            $user_name=$fname.' '.$lname;
-            $user['user']['user_name']=$user_name;
-            $users_table = TableRegistry::getTableLocator()->get('Users');
-            $users = $users_table->newEntity($user['user']);
-            if ($users->getErrors()) {
-                Log::debug('if');
-                $result=$users->getErrors();
-                $this->set('Users',$users);
-                return $this->response->withType("application/json")->withStringBody(json_encode($result));
-            } 
-            else {
+    public function add(){
+        $this->viewBuilder()->enableAutoLayout(false);
+        if($this->request->is('post')){
+            $headers = $this->request->getHeaders();
+            $contentType = ($headers['Content-Type']);
+            $content_type = implode(',', $contentType);
+            if (strpos($content_type, 'application/xml') !== false || strpos($content_type, 'text/xml') !== false) {
+                $user=Xml::toArray(Xml::build($this->request->input()));
+                $fname=$user['user']['fname'];
+                $lname=$user['user']['lname'];
+                $user_name=$fname.' '.$lname;
+                $user['user']['user_name']=$user_name;
+                $users_table = TableRegistry::getTableLocator()->get('Users');
+                $users = $users_table->newEntity($user['user']);
                 $user_name = $user['user']['user_name']; 
                 $email = $user['user']['email'];
                 $hashPswdObj = new DefaultPasswordHasher;
@@ -59,6 +57,27 @@ class UsersController extends AppController{
                 $address_line_2 = $user['user']['address_line_2'];
                 $pincode = $user['user']['pincode'];
                 $phone_number = $user['user']['phone_number'];
+                
+            }
+            else{
+                $this->request = $this->request->withData('user_name', $this->request->getData('fname') . ' ' . $this->request->getData('lname'));
+                $users_table = TableRegistry::getTableLocator()->get('Users');
+                $users = $users_table->newEntity($this->request->getData());                
+                $user_name=$this->request->getData('user_name'); 
+                $email = $this->request->getData('email');
+                $hashPswdObj = new DefaultPasswordHasher;
+                $password = $hashPswdObj->hash($this->request->getData('password'));
+                $address_line_1 = $this->request->getData('address_line_1');
+                $address_line_2 = $this->request->getData('address_line_2');
+                $pincode = $this->request->getData('pincode');
+                $phone_number = $this->request->getData('phone_number');            
+            }
+            if ($users->getErrors()) {
+                $result=$users->getErrors();
+                $this->set('Users',$users);
+                return $this->response->withType("application/json")->withStringBody(json_encode($result));
+            } 
+            else{
                 $users->user_name = $user_name;
                 $users->email = $email;
                 $users->password = $password;
@@ -67,7 +86,7 @@ class UsersController extends AppController{
                 $users->pincode = $pincode;
                 $users->phone_number = $phone_number;
                 $this->set('Users', $users);
-                              
+                                
                 if($users_table->save($users)){
                     $result=array('message','User is added');
                     return $this->response->withType("application/json")->withStringBody(json_encode($result));
@@ -76,8 +95,8 @@ class UsersController extends AppController{
                     $result=array('message','User is not added');
                     return $this->response->withType("application/json")->withStringBody(json_encode($result));
                 }
-            }   
-        }
+            }
+        }   
     }
     public function display(){       
         $users=TableRegistry::getTableLocator()->get('Users');
